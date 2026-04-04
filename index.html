@@ -1,1 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Customer Support Chatbot</title>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
 
+    body {
+      min-height: 100vh;
+      background: linear-gradient(135deg, #eff6ff, #ffffff);
+      color: #1f2937;
+    }
+
+    .navbar {
+      width: 100%;
+      background: #ffffff;
+      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+      padding: 16px 30px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+      color: #1d4ed8;
+    }
+
+    .hero {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 80px 20px 40px;
+      text-align: center;
+    }
+
+    .tag {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 8px 16px;
+      border-radius: 999px;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      color: #0f172a;
+      margin-bottom: 18px;
+    }
+
+    .hero p {
+      font-size: 18px;
+      color: #475569;
+      line-height: 1.7;
+      max-width: 700px;
+      margin: 0 auto 30px;
+    }
+
+    .features {
+      max-width: 1100px;
+      margin: 0 auto 60px;
+      padding: 0 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .feature-box {
+      background: #ffffff;
+      border-radius: 18px;
+      padding: 24px;
+      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
+      border: 1px solid #e2e8f0;
+    }
+
+    .feature-box h3 {
+      color: #1d4ed8;
+      margin-bottom: 10px;
+      font-size: 20px;
+    }
+
+    .feature-box p {
+      color: #475569;
+      font-size: 15px;
+      line-height: 1.6;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px 20px;
+      color: #64748b;
+      font-size: 14px;
+    }
+
+    df-messenger {
+      --df-messenger-bot-message: #e0edff;
+      --df-messenger-button-titlebar-color: #2563eb;
+      --df-messenger-chat-background-color: #ffffff;
+      --df-messenger-font-color: #111827;
+      --df-messenger-send-icon: #2563eb;
+      --df-messenger-user-message: #2563eb;
+      --df-messenger-input-box-color: #ffffff;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <div class="logo">CustomerSupportBot</div>
+  </nav>
+
+  <section class="hero">
+    <div class="tag">AI Customer Care Assistant</div>
+    <h1>Customer Support Chatbot</h1>
+    <p>
+      This chatbot helps users with order issues, payment problems,
+      refunds, complaints, delivery queries, and general customer support.
+    </p>
+  </section>
+
+  <section class="features">
+    <div class="feature-box">
+      <h3>Order Support</h3>
+      <p>Get help with order status, delays, missing items, and shipping issues.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Payment Help</h3>
+      <p>Ask about failed payments, deducted money, and billing-related problems.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Refund Support</h3>
+      <p>Get guidance about refunds, returns, and cancellations.</p>
+    </div>
+    <div class="feature-box">
+      <h3>Complaint Support</h3>
+      <p>Register complaints and get quick support information.</p>
+    </div>
+  </section>
+
+  <df-messenger
+    intent="WELCOME"
+    chat-title="CustomerSupportBot"
+    agent-id="1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2"
+    language-code="en">
+  </df-messenger>
+
+  <footer>
+    AI-Based Customer Support Chatbot using Dialogflow ES
+  </footer>
+</body>
+</html>
