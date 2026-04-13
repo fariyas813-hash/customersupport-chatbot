@@ -3,8 +3,12 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>SupportIQ — AI Customer Support Chatbot</title>
-  <meta name="description" content="AI-powered customer support chatbot for order, refund, payment, delivery, and complaint assistance." />
+  <title>SupportIQ - AI Customer Support Chatbot</title>
+  <meta
+    name="description"
+    content="AI customer support chatbot for refunds, payments, order tracking, delivery issues, and complaints."
+  />
+
   <style>
     * {
       margin: 0;
@@ -18,8 +22,8 @@
     }
 
     body {
-      background: #07110a;
-      color: #e5f7ea;
+      background: #061009;
+      color: #e8f5ec;
       line-height: 1.6;
       overflow-x: hidden;
     }
@@ -39,9 +43,9 @@
       position: sticky;
       top: 0;
       z-index: 999;
-      background: rgba(3, 9, 5, 0.92);
-      backdrop-filter: blur(10px);
-      border-bottom: 1px solid rgba(34, 197, 94, 0.18);
+      background: rgba(2, 8, 4, 0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(34, 197, 94, 0.16);
     }
 
     .navbar {
@@ -50,12 +54,13 @@
       align-items: center;
       padding: 16px 0;
       gap: 20px;
+      flex-wrap: wrap;
     }
 
     .logo {
-      font-size: 1.35rem;
+      font-size: 1.4rem;
       font-weight: 700;
-      color: #ffffff;
+      color: #fff;
     }
 
     .logo span {
@@ -70,7 +75,7 @@
     }
 
     .nav-links a {
-      color: #d6f5df;
+      color: #d8f7df;
       font-size: 0.95rem;
       transition: 0.25s ease;
     }
@@ -81,7 +86,7 @@
 
     .nav-btn {
       background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #031006 !important;
+      color: #041008 !important;
       padding: 10px 16px;
       border-radius: 10px;
       font-weight: bold;
@@ -99,26 +104,26 @@
     }
 
     .eyebrow {
-      display: inline-flex;
-      gap: 10px;
+      display: flex;
       flex-wrap: wrap;
+      gap: 10px;
       margin-bottom: 18px;
     }
 
     .eyebrow span {
-      background: rgba(34, 197, 94, 0.1);
-      color: #8ef0ae;
-      border: 1px solid rgba(34, 197, 94, 0.24);
+      background: rgba(34, 197, 94, 0.08);
+      color: #96f0b0;
+      border: 1px solid rgba(34, 197, 94, 0.2);
       border-radius: 999px;
       padding: 8px 12px;
-      font-size: 0.85rem;
+      font-size: 0.84rem;
       font-weight: bold;
     }
 
     .hero h1 {
-      font-size: 3.2rem;
+      font-size: 3.1rem;
       line-height: 1.1;
-      color: #ffffff;
+      color: #fff;
       margin-bottom: 18px;
     }
 
@@ -144,6 +149,10 @@
       transition: 0.25s ease;
     }
 
+    .btn:hover {
+      transform: translateY(-2px);
+    }
+
     .btn-primary {
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #041008;
@@ -151,25 +160,21 @@
     }
 
     .btn-secondary {
-      border: 1px solid rgba(34, 197, 94, 0.3);
-      color: #d8f7e0;
-      background: rgba(255,255,255,0.02);
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
+      border: 1px solid rgba(34, 197, 94, 0.28);
+      background: rgba(255, 255, 255, 0.02);
+      color: #d8f7df;
     }
 
     .hero-stats {
       display: grid;
       grid-template-columns: repeat(3, minmax(120px, 1fr));
       gap: 16px;
-      max-width: 600px;
+      max-width: 640px;
     }
 
     .stat {
-      background: rgba(255,255,255,0.03);
-      border: 1px solid rgba(34, 197, 94, 0.16);
+      background: rgba(255, 255, 255, 0.03);
+      border: 1px solid rgba(34, 197, 94, 0.14);
       border-radius: 18px;
       padding: 18px;
     }
@@ -187,11 +192,11 @@
     }
 
     .demo-card {
-      background: linear-gradient(180deg, rgba(10,20,12,0.95), rgba(5,10,6,0.95));
-      border: 1px solid rgba(34, 197, 94, 0.18);
+      background: linear-gradient(180deg, rgba(9, 18, 11, 0.98), rgba(4, 8, 5, 0.98));
+      border: 1px solid rgba(34, 197, 94, 0.16);
       border-radius: 24px;
       padding: 24px;
-      box-shadow: 0 18px 42px rgba(0,0,0,0.25);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.28);
     }
 
     .demo-top {
@@ -200,22 +205,23 @@
       align-items: center;
       margin-bottom: 18px;
       gap: 10px;
+      flex-wrap: wrap;
     }
 
     .demo-title h3 {
-      color: #ffffff;
+      color: #fff;
       margin-bottom: 4px;
     }
 
     .online {
-      color: #7cf1a2;
+      color: #82f1a7;
       font-size: 0.9rem;
     }
 
     .chip {
-      background: rgba(34, 197, 94, 0.12);
-      border: 1px solid rgba(34, 197, 94, 0.25);
-      color: #9bf5b7;
+      background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.24);
+      color: #96f0b0;
       border-radius: 999px;
       padding: 8px 12px;
       font-size: 0.82rem;
@@ -231,9 +237,9 @@
     }
 
     .bot {
-      background: rgba(255,255,255,0.05);
+      background: rgba(255, 255, 255, 0.05);
       color: #e8f9ed;
-      border: 1px solid rgba(34, 197, 94, 0.14);
+      border: 1px solid rgba(34, 197, 94, 0.12);
     }
 
     .user {
@@ -244,16 +250,17 @@
     }
 
     .result-box {
-      margin-top: 18px;
+      margin-top: 16px;
       background: rgba(34, 197, 94, 0.08);
-      border: 1px solid rgba(34, 197, 94, 0.2);
+      border: 1px solid rgba(34, 197, 94, 0.18);
       border-radius: 18px;
       padding: 18px;
+      color: #d8f7df;
     }
 
     .result-box strong {
-      color: #8df1ae;
       display: block;
+      color: #96f0b0;
       margin-bottom: 6px;
     }
 
@@ -267,17 +274,16 @@
     }
 
     .section-head .label {
-      color: #7cf1a2;
+      color: #82f1a7;
       font-size: 0.88rem;
       font-weight: bold;
       margin-bottom: 8px;
       display: block;
-      letter-spacing: 0.4px;
     }
 
     .section-head h2 {
       font-size: 2.15rem;
-      color: #ffffff;
+      color: #fff;
       margin-bottom: 10px;
     }
 
@@ -287,21 +293,22 @@
       margin: auto;
     }
 
-    .grid-3, .grid-4 {
+    .grid-3,
+    .grid-4 {
       display: grid;
       gap: 22px;
     }
 
     .grid-3 {
-      grid-template-columns: repeat(3, minmax(0,1fr));
+      grid-template-columns: repeat(3, minmax(0, 1fr));
     }
 
     .grid-4 {
-      grid-template-columns: repeat(4, minmax(0,1fr));
+      grid-template-columns: repeat(4, minmax(0, 1fr));
     }
 
     .card {
-      background: rgba(255,255,255,0.03);
+      background: rgba(255, 255, 255, 0.03);
       border: 1px solid rgba(34, 197, 94, 0.14);
       border-radius: 22px;
       padding: 24px;
@@ -327,7 +334,7 @@
     }
 
     .card h3 {
-      color: #ffffff;
+      color: #fff;
       margin-bottom: 10px;
       font-size: 1.08rem;
     }
@@ -337,32 +344,31 @@
       font-size: 0.96rem;
     }
 
-    .weight {
-      display: inline-block;
-      margin-top: 12px;
-      color: #8cf0ad;
-      font-weight: bold;
-      font-size: 0.92rem;
-    }
-
-    .cta-box {
-      background: linear-gradient(135deg, rgba(34, 197, 94, 0.12), rgba(255,255,255,0.03));
-      border: 1px solid rgba(34, 197, 94, 0.24);
+    .bot-area {
+      background: linear-gradient(135deg, rgba(34, 197, 94, 0.08), rgba(255, 255, 255, 0.02));
+      border: 1px solid rgba(34, 197, 94, 0.18);
       border-radius: 28px;
-      padding: 34px;
+      padding: 30px;
       text-align: center;
     }
 
-    .cta-box h2 {
-      color: #ffffff;
+    .bot-area h2 {
+      color: #fff;
       font-size: 2rem;
       margin-bottom: 12px;
     }
 
-    .cta-box p {
+    .bot-area p {
       color: #c0ddc8;
       max-width: 760px;
-      margin: 0 auto 22px;
+      margin: 0 auto 14px;
+    }
+
+    .bot-note {
+      color: #8ef0ae;
+      font-size: 0.92rem;
+      margin-top: 8px;
+      margin-bottom: 6px;
     }
 
     footer {
@@ -395,8 +401,22 @@
       background: linear-gradient(135deg, #22c55e, #16a34a);
       color: #041008;
       font-size: 1.4rem;
-      box-shadow: 0 16px 30px rgba(34, 197, 94, 0.22);
       font-weight: bold;
+      box-shadow: 0 16px 30px rgba(34, 197, 94, 0.22);
+    }
+
+    /* Dialogflow Messenger Styling */
+    df-messenger {
+      --df-messenger-bot-message: #1f2937;
+      --df-messenger-button-titlebar-color: #22c55e;
+      --df-messenger-chat-background-color: #020402;
+      --df-messenger-font-color: #ffffff;
+      --df-messenger-send-icon: #22c55e;
+      --df-messenger-user-message: #22c55e;
+      --df-messenger-input-box-color: #0b120d;
+      --df-messenger-input-font-color: #ffffff;
+      --df-messenger-minimized-chat-close-icon-color: #041008;
+      --df-messenger-input-placeholder-font-color: #9ca3af;
     }
 
     @media (max-width: 980px) {
@@ -407,7 +427,7 @@
       }
 
       .hero h1 {
-        font-size: 2.45rem;
+        font-size: 2.4rem;
       }
 
       .hero-stats {
@@ -416,21 +436,12 @@
     }
 
     @media (max-width: 640px) {
-      .navbar {
-        flex-direction: column;
-        align-items: flex-start;
-      }
-
-      .nav-links {
-        gap: 14px;
-      }
-
       .hero h1 {
         font-size: 2rem;
       }
 
       .section-head h2,
-      .cta-box h2 {
+      .bot-area h2 {
         font-size: 1.6rem;
       }
 
@@ -438,209 +449,230 @@
         width: 100%;
         text-align: center;
       }
+
+      .nav-links {
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-<header>
-  <div class="container navbar">
-    <div class="logo">Support<span>IQ</span></div>
-    <nav class="nav-links">
-      <a href="#how-it-works">How It Works</a>
-      <a href="#model">Support Model</a>
-      <a href="#features">Features</a>
-      <a href="#try-bot" class="nav-btn">Try the Bot →</a>
-    </nav>
-  </div>
-</header>
+  <header>
+    <div class="container navbar">
+      <div class="logo">Support<span>IQ</span></div>
+      <nav class="nav-links">
+        <a href="#how-it-works">How It Works</a>
+        <a href="#model">Support Model</a>
+        <a href="#features">Features</a>
+        <a href="#try-bot" class="nav-btn">Try the Bot →</a>
+      </nav>
+    </div>
+  </header>
 
-<section class="hero container">
-  <div class="hero-grid">
-    <div>
-      <div class="eyebrow">
-        <span>AI-Powered</span>
-        <span>Live Support Flow</span>
-        <span>Free to Use</span>
-      </div>
-
-      <h1>Resolve Customer Support Queries Instantly.</h1>
-
-      <p>
-        SupportIQ is an intelligent customer support chatbot that helps users with order issues,
-        payment failures, refunds, delivery delays, complaints, and common FAQ queries through
-        a structured conversational flow.
-      </p>
-
-      <div class="hero-buttons">
-        <a class="btn btn-primary" href="#try-bot">Launch Support Bot →</a>
-        <a class="btn btn-secondary" href="#how-it-works">See How It Works</a>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat">
-          <strong>5+</strong>
-          <span>Support Categories</span>
+  <section class="hero container">
+    <div class="hero-grid">
+      <div>
+        <div class="eyebrow">
+          <span>AI-Powered</span>
+          <span>Live Support Flow</span>
+          <span>Free to Use</span>
         </div>
-        <div class="stat">
-          <strong>24/7</strong>
-          <span>Instant Help</span>
+
+        <h1>Resolve Customer Support Queries Instantly.</h1>
+
+        <p>
+          SupportIQ is an intelligent customer support chatbot that helps users with order issues,
+          payment failures, refunds, delivery delays, complaints, and common FAQ queries through
+          a structured conversational flow.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="btn btn-primary" href="#try-bot">Launch Support Bot →</a>
+          <a class="btn btn-secondary" href="#how-it-works">See How It Works</a>
         </div>
-        <div class="stat">
-          <strong>Free</strong>
-          <span>No Sign-up Needed</span>
+
+        <div class="hero-stats">
+          <div class="stat">
+            <strong>5+</strong>
+            <span>Support Categories</span>
+          </div>
+          <div class="stat">
+            <strong>24/7</strong>
+            <span>Instant Help</span>
+          </div>
+          <div class="stat">
+            <strong>Free</strong>
+            <span>No Sign-up Needed</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <div class="demo-top">
+          <div class="demo-title">
+            <h3>SupportIQ Assistant</h3>
+            <div class="online">Online now</div>
+          </div>
+          <div class="chip">Live Bot Preview</div>
+        </div>
+
+        <div class="bubble bot">
+          Welcome to SupportIQ! I can help with refunds, delivery issues, payment problems,
+          and complaints. How can I help you today?
+        </div>
+        <div class="bubble user">My order is delayed</div>
+        <div class="bubble bot">
+          I’m sorry for the delay. Please share your order ID so I can guide you with the delivery status.
+        </div>
+
+        <div class="result-box">
+          <strong>Support Response</strong>
+          Query identified: Delivery Issue<br />
+          Suggested next step: Track order / contact support / check ETA
         </div>
       </div>
     </div>
+  </section>
 
-    <div class="demo-card">
-      <div class="demo-top">
-        <div class="demo-title">
-          <h3>SupportIQ Assistant</h3>
-          <div class="online">Online now</div>
+  <section id="how-it-works">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">// Process</span>
+        <h2>How SupportIQ Works</h2>
+        <p>
+          A structured conversation flow collects the customer issue type and gives an instant
+          support response in simple steps.
+        </p>
+      </div>
+
+      <div class="grid-3">
+        <div class="card">
+          <div class="step-no">01</div>
+          <h3>Identify Query Type</h3>
+          <p>
+            The bot understands whether the user needs help with refund, order tracking,
+            complaint registration, delivery delay, or payment support.
+          </p>
         </div>
-        <div class="chip">Live Bot Preview</div>
-      </div>
 
-      <div class="bubble bot">Welcome to SupportIQ! I can help with refunds, delivery issues, payment problems, and complaints. How can I help you today?</div>
-      <div class="bubble user">My order is delayed</div>
-      <div class="bubble bot">I’m sorry for the delay. Please share your order ID so I can guide you with the delivery status.</div>
+        <div class="card">
+          <div class="step-no">02</div>
+          <h3>Intent Detection</h3>
+          <p>
+            Dialogflow ES maps the message to the correct customer support intent using
+            trained phrases and fallback handling.
+          </p>
+        </div>
 
-      <div class="result-box">
-        <strong>Support Response</strong>
-        Query identified: Delivery Issue<br>
-        Suggested next step: Track order / contact support / check ETA
+        <div class="card">
+          <div class="step-no">03</div>
+          <h3>Instant Guidance</h3>
+          <p>
+            The chatbot returns the relevant support answer, next step, or escalation
+            suggestion immediately.
+          </p>
+        </div>
       </div>
     </div>
+  </section>
+
+  <section id="model">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">// Support Engine</span>
+        <h2>What Drives the Bot</h2>
+        <p>
+          The chatbot is designed around the most common customer care issues so responses are
+          fast, relevant, and easy to understand.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <h3>Order Tracking</h3>
+          <p>Handles status checks, missing orders, and shipping delay questions.</p>
+        </div>
+        <div class="card">
+          <h3>Refund & Return</h3>
+          <p>Explains refund policy, cancellation steps, and expected refund processing time.</p>
+        </div>
+        <div class="card">
+          <h3>Payment Issues</h3>
+          <p>Covers failed transactions, deducted money, billing mistakes, and invoice-related problems.</p>
+        </div>
+        <div class="card">
+          <h3>Complaint Handling</h3>
+          <p>Guides customers for complaint registration and directs them to the correct next step.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="features">
+    <div class="container">
+      <div class="section-head">
+        <span class="label">// Capabilities</span>
+        <h2>Built for Real Customer Help</h2>
+        <p>
+          Not just a text bot — SupportIQ is designed to make a support project look complete,
+          practical, and user-friendly.
+        </p>
+      </div>
+
+      <div class="grid-4">
+        <div class="card">
+          <h3>Intent-Based Chat</h3>
+          <p>Uses Dialogflow ES to understand customer intent from natural language queries.</p>
+        </div>
+        <div class="card">
+          <h3>Quick Response Flow</h3>
+          <p>Gives instant answers for common support questions without long waiting time.</p>
+        </div>
+        <div class="card">
+          <h3>Fallback Handling</h3>
+          <p>When the query is unclear, the bot can redirect the user to supported categories.</p>
+        </div>
+        <div class="card">
+          <h3>Project-Friendly UI</h3>
+          <p>Modern one-page layout inspired by live AI project demos for presentation and submission.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="try-bot">
+    <div class="container">
+      <div class="bot-area">
+        <h2>Try the Bot</h2>
+        <p>
+          Click the green chat icon at the bottom-right corner to start chatting with the
+          AI customer support assistant.
+        </p>
+        <p class="bot-note">Live Dialogflow Messenger is already integrated below.</p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p><strong>SupportIQ — AI Customer Support Chatbot</strong></p>
+      <p>Built for customer support automation using Dialogflow ES.</p>
+      <p>Project by Fariya Shaikh</p>
+    </div>
+  </footer>
+
+  <div class="float-chat">
+    <a href="#try-bot" title="Open Bot">💬</a>
   </div>
-</section>
 
-<section id="how-it-works">
-  <div class="container">
-    <div class="section-head">
-      <span class="label">// Process</span>
-      <h2>How SupportIQ Works</h2>
-      <p>
-        A structured conversation flow collects the customer issue type and gives an instant support response in simple steps.
-      </p>
-    </div>
-
-    <div class="grid-3">
-      <div class="card">
-        <div class="step-no">01</div>
-        <h3>Identify Query Type</h3>
-        <p>The bot understands whether the user needs help with refund, order tracking, complaint registration, delivery delay, or payment support.</p>
-      </div>
-
-      <div class="card">
-        <div class="step-no">02</div>
-        <h3>Intent Detection</h3>
-        <p>Dialogflow ES maps the message to the correct customer support intent using trained phrases and fallback handling.</p>
-      </div>
-
-      <div class="card">
-        <div class="step-no">03</div>
-        <h3>Instant Guidance</h3>
-        <p>The chatbot returns the relevant support answer, next step, or escalation suggestion immediately.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="model">
-  <div class="container">
-    <div class="section-head">
-      <span class="label">// Support Engine</span>
-      <h2>What Drives the Bot</h2>
-      <p>
-        The chatbot is designed around the most common customer care issues so responses are fast, relevant, and easy to understand.
-      </p>
-    </div>
-
-    <div class="grid-4">
-      <div class="card">
-        <h3>Order Tracking</h3>
-        <p>Handles status checks, missing orders, and shipping delay questions.</p>
-        <span class="weight">High-frequency support</span>
-      </div>
-
-      <div class="card">
-        <h3>Refund & Return</h3>
-        <p>Explains refund policy, cancellation steps, and expected refund processing time.</p>
-        <span class="weight">Policy support</span>
-      </div>
-
-      <div class="card">
-        <h3>Payment Issues</h3>
-        <p>Covers failed transactions, deducted money, billing mistakes, and invoice-related problems.</p>
-        <span class="weight">Issue resolution</span>
-      </div>
-
-      <div class="card">
-        <h3>Complaint Handling</h3>
-        <p>Guides customers for complaint registration and directs them to the correct next step.</p>
-        <span class="weight">Escalation support</span>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="features">
-  <div class="container">
-    <div class="section-head">
-      <span class="label">// Capabilities</span>
-      <h2>Built for Real Customer Help</h2>
-      <p>
-        Not just a text bot — SupportIQ is designed to make a support project look complete, practical, and user-friendly.
-      </p>
-    </div>
-
-    <div class="grid-4">
-      <div class="card">
-        <h3>Intent-Based Chat</h3>
-        <p>Uses Dialogflow ES to understand customer intent from natural language queries.</p>
-      </div>
-      <div class="card">
-        <h3>Quick Response Flow</h3>
-        <p>Gives instant answers for common support questions without long waiting time.</p>
-      </div>
-      <div class="card">
-        <h3>Fallback Handling</h3>
-        <p>When the query is unclear, the bot can redirect the user to supported categories.</p>
-      </div>
-      <div class="card">
-        <h3>Project-Friendly UI</h3>
-        <p>Modern one-page layout inspired by live AI project demos for presentation and submission.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section id="try-bot">
-  <div class="container">
-    <div class="cta-box">
-      <h2>Ready to Try the Bot?</h2>
-      <p>
-        Your old embedded Dialogflow web link is failing, so for now this button opens the bot directly in a new tab. After you generate a fresh working web integration link, only this one URL needs to be replaced.
-      </p>
-      <a class="btn btn-primary" href="https://bot.dialogflow.com/1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2" target="_blank" rel="noopener noreferrer">
-        Launch Bot in New Tab →
-      </a>
-    </div>
-  </div>
-</section>
-
-<footer>
-  <div class="container">
-    <p><strong>SupportIQ — AI Customer Support Chatbot</strong></p>
-    <p>Built for customer support automation using Dialogflow ES style conversational flow.</p>
-    <p>Project by Fariya Shaikh</p>
-  </div>
-</footer>
-
-<div class="float-chat">
-  <a href="#try-bot" title="Open Bot">💬</a>
-</div>
+  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+  <df-messenger
+    intent="WELCOME"
+    chat-title="CustomerSupportBot"
+    agent-id="1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2"
+    language-code="en"
+  ></df-messenger>
 
 </body>
 </html>
