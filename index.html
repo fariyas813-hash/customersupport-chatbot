@@ -1,10 +1,9 @@
-<!DOCTYPE html>
+ <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Support Chatbot</title>
-  <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
   <style>
     * {
       margin: 0;
@@ -13,149 +12,369 @@
       font-family: Arial, sans-serif;
     }
 
-    body {
-      min-height: 100vh;
-      background: linear-gradient(135deg, #eff6ff, #ffffff);
-      color: #1f2937;
+    html {
+      scroll-behavior: smooth;
     }
 
-    .navbar {
-      width: 100%;
-      background: #ffffff;
-      box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
-      padding: 16px 30px;
+    body {
+      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+      color: #1e293b;
+      line-height: 1.6;
+    }
+
+    header {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      padding: 18px 8%;
       display: flex;
       justify-content: space-between;
       align-items: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
     }
 
-    .logo {
-      font-size: 24px;
+    header h2 {
+      font-size: 1.4rem;
       font-weight: bold;
-      color: #1d4ed8;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 20px;
+      font-size: 0.95rem;
+      transition: 0.3s;
+    }
+
+    nav a:hover {
+      color: #93c5fd;
     }
 
     .hero {
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 80px 20px 40px;
-      text-align: center;
+      min-height: 90vh;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      padding: 60px 8%;
+      flex-wrap: wrap;
     }
 
-    .tag {
-      display: inline-block;
-      background: #dbeafe;
-      color: #1d4ed8;
-      padding: 8px 16px;
-      border-radius: 999px;
-      font-size: 14px;
-      font-weight: 700;
-      margin-bottom: 18px;
+    .hero-text {
+      flex: 1;
+      min-width: 280px;
     }
 
-    .hero h1 {
-      font-size: 42px;
+    .hero-text h1 {
+      font-size: 3rem;
+      margin-bottom: 20px;
       color: #0f172a;
-      margin-bottom: 18px;
     }
 
-    .hero p {
-      font-size: 18px;
+    .hero-text p {
+      font-size: 1.1rem;
+      margin-bottom: 25px;
+      color: #334155;
+      max-width: 600px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 15px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 12px 24px;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+      cursor: pointer;
+      text-decoration: none;
+      display: inline-block;
+      transition: 0.3s;
+    }
+
+    .btn-primary {
+      background: #2563eb;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #1d4ed8;
+      transform: translateY(-2px);
+    }
+
+    .btn-secondary {
+      background: white;
+      color: #2563eb;
+      border: 1px solid #2563eb;
+    }
+
+    .btn-secondary:hover {
+      background: #eff6ff;
+      transform: translateY(-2px);
+    }
+
+    .hero-card {
+      flex: 1;
+      min-width: 280px;
+      background: white;
+      border-radius: 20px;
+      padding: 25px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .hero-card h3 {
+      margin-bottom: 15px;
+      color: #0f172a;
+    }
+
+    .hero-card ul {
+      padding-left: 20px;
       color: #475569;
-      line-height: 1.7;
-      max-width: 700px;
-      margin: 0 auto 30px;
     }
 
-    .features {
-      max-width: 1100px;
-      margin: 0 auto 60px;
-      padding: 0 20px;
+    section {
+      padding: 70px 8%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .section-title h2 {
+      font-size: 2rem;
+      color: #0f172a;
+      margin-bottom: 10px;
+    }
+
+    .section-title p {
+      color: #475569;
+      max-width: 700px;
+      margin: auto;
+    }
+
+    .card-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+      gap: 22px;
+    }
+
+    .card {
+      background: white;
+      padding: 24px;
+      border-radius: 16px;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card h3 {
+      margin-bottom: 12px;
+      color: #1e3a8a;
+    }
+
+    .card p {
+      color: #475569;
+      font-size: 0.96rem;
+    }
+
+    .how-it-works {
+      background: #f1f5f9;
+      border-radius: 24px;
+    }
+
+    .steps {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
       gap: 20px;
     }
 
-    .feature-box {
-      background: #ffffff;
-      border-radius: 18px;
-      padding: 24px;
-      box-shadow: 0 8px 24px rgba(15, 23, 42, 0.08);
-      border: 1px solid #e2e8f0;
+    .step {
+      background: white;
+      border-radius: 16px;
+      padding: 22px;
+      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
     }
 
-    .feature-box h3 {
-      color: #1d4ed8;
-      margin-bottom: 10px;
-      font-size: 20px;
-    }
-
-    .feature-box p {
-      color: #475569;
-      font-size: 15px;
-      line-height: 1.6;
-    }
-
-    footer {
+    .step span {
+      display: inline-block;
+      width: 36px;
+      height: 36px;
+      line-height: 36px;
       text-align: center;
-      padding: 25px 20px;
-      color: #64748b;
-      font-size: 14px;
+      border-radius: 50%;
+      background: #2563eb;
+      color: white;
+      font-weight: bold;
+      margin-bottom: 12px;
     }
 
-    df-messenger {
-      --df-messenger-bot-message: #e0edff;
-      --df-messenger-button-titlebar-color: #2563eb;
-      --df-messenger-chat-background-color: #ffffff;
-      --df-messenger-font-color: #111827;
-      --df-messenger-send-icon: #2563eb;
-      --df-messenger-user-message: #2563eb;
-      --df-messenger-input-box-color: #ffffff;
+    .chatbot-section {
+      text-align: center;
+    }
+
+    .chatbot-box {
+      max-width: 1000px;
+      margin: 30px auto 0;
+      background: white;
+      border-radius: 20px;
+      padding: 20px;
+      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 14px;
+      background: #f8fafc;
+    }
+
+    .footer {
+      background: #0f172a;
+      color: white;
+      text-align: center;
+      padding: 22px;
+      margin-top: 40px;
+    }
+
+    .footer p {
+      opacity: 0.9;
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 768px) {
+      .hero-text h1 {
+        font-size: 2.2rem;
+      }
+
+      nav {
+        display: none;
+      }
+
+      .hero {
+        padding-top: 40px;
+      }
     }
   </style>
 </head>
 <body>
-  <nav class="navbar">
-    <div class="logo">CustomerSupportBot</div>
-  </nav>
 
-  <section class="hero">
-    <div class="tag">AI Customer Care Assistant</div>
-    <h1>Customer Support Chatbot</h1>
-    <p>
-      This chatbot helps users with order issues, payment problems,
-      refunds, complaints, delivery queries, and general customer support.
-    </p>
+  <header>
+    <h2>CustomerSupportBot</h2>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#features">Features</a>
+      <a href="#support">Support</a>
+      <a href="#chatbot">Try Bot</a>
+    </nav>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-text">
+      <h1>AI Customer Care Assistant</h1>
+      <p>
+        Customer Support Chatbot that helps users with order issues, payment problems,
+        refunds, complaints, delivery queries, and general support.
+      </p>
+      <div class="hero-buttons">
+        <a href="#chatbot" class="btn btn-primary">Try Chatbot</a>
+        <a href="#features" class="btn btn-secondary">Explore Features</a>
+      </div>
+    </div>
+
+    <div class="hero-card">
+      <h3>What this bot can do</h3>
+      <ul>
+        <li>Handle order and delivery questions</li>
+        <li>Guide users on payment issues</li>
+        <li>Support refunds and cancellations</li>
+        <li>Assist with complaints and customer care</li>
+      </ul>
+    </div>
   </section>
 
-  <section class="features">
-    <div class="feature-box">
-      <h3>Order Support</h3>
-      <p>Get help with order status, delays, missing items, and shipping issues.</p>
+  <section id="features">
+    <div class="section-title">
+      <h2>Key Features</h2>
+      <p>Designed to provide quick and user-friendly support for common customer service issues.</p>
     </div>
-    <div class="feature-box">
-      <h3>Payment Help</h3>
-      <p>Ask about failed payments, deducted money, and billing-related problems.</p>
-    </div>
-    <div class="feature-box">
-      <h3>Refund Support</h3>
-      <p>Get guidance about refunds, returns, and cancellations.</p>
-    </div>
-    <div class="feature-box">
-      <h3>Complaint Support</h3>
-      <p>Register complaints and get quick support information.</p>
+
+    <div class="card-grid">
+      <div class="card">
+        <h3>Order Support</h3>
+        <p>Get help with order status, delays, missing items, and shipping issues.</p>
+      </div>
+      <div class="card">
+        <h3>Payment Help</h3>
+        <p>Ask about failed payments, deducted money, and billing-related problems.</p>
+      </div>
+      <div class="card">
+        <h3>Refund Support</h3>
+        <p>Get guidance for returns, cancellations, and refund requests.</p>
+      </div>
+      <div class="card">
+        <h3>Complaint Support</h3>
+        <p>Register complaints and receive quick assistance through the chatbot.</p>
+      </div>
     </div>
   </section>
 
-  <df-messenger
-    intent="WELCOME"
-    chat-title="CustomerSupportBot"
-    agent-id="1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2"
-    language-code="en">
-  </df-messenger>
+  <section class="how-it-works" id="support">
+    <div class="section-title">
+      <h2>How It Works</h2>
+      <p>The chatbot identifies user issues and provides instant support responses.</p>
+    </div>
 
-  <footer>
-    AI-Based Customer Support Chatbot using Dialogflow ES
+    <div class="steps">
+      <div class="step">
+        <span>1</span>
+        <h3>Ask a Question</h3>
+        <p>User enters a support-related query such as refund, order, or payment issue.</p>
+      </div>
+      <div class="step">
+        <span>2</span>
+        <h3>Bot Understands</h3>
+        <p>The chatbot uses Dialogflow ES intents to detect the problem category.</p>
+      </div>
+      <div class="step">
+        <span>3</span>
+        <h3>Instant Response</h3>
+        <p>The bot replies with relevant customer support guidance and next steps.</p>
+      </div>
+      <div class="step">
+        <span>4</span>
+        <h3>Quick Assistance</h3>
+        <p>Users get fast help without needing to wait for manual support.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="chatbot-section" id="chatbot">
+    <div class="section-title">
+      <h2>Try the Chatbot</h2>
+      <p>Use the embedded Dialogflow customer support chatbot below.</p>
+    </div>
+
+    <div class="chatbot-box">
+      <iframe
+        src="https://console.dialogflow.com/api-client/demo/embedded/newagent-enct"
+        allow="microphone">
+      </iframe>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <p>AI-Based Customer Support Chatbot using Dialogflow ES</p>
   </footer>
+
 </body>
 </html>
