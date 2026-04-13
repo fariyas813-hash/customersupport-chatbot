@@ -4,6 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Customer Support Chatbot</title>
+  <meta name="description" content="AI-based customer support chatbot for handling order, refund, payment, delivery, and complaint queries." />
   <style>
     * {
       margin: 0;
@@ -17,148 +18,225 @@
     }
 
     body {
-      background: linear-gradient(135deg, #f8fafc, #e2e8f0);
-      color: #1e293b;
+      background: linear-gradient(135deg, #f8fbff, #eef4ff);
+      color: #172033;
       line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
     }
 
     header {
-      background: linear-gradient(135deg, #0f172a, #1e3a8a);
-      color: white;
-      padding: 18px 8%;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
+      width: 100%;
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      background: rgba(15, 23, 42, 0.92);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.12);
     }
 
-    header h2 {
-      font-size: 1.4rem;
+    .navbar {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 16px 0;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      color: #ffffff;
+      font-size: 1.35rem;
       font-weight: bold;
+      letter-spacing: 0.3px;
     }
 
-    nav a {
-      color: white;
-      text-decoration: none;
-      margin-left: 20px;
+    .logo span {
+      color: #60a5fa;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 22px;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: #ffffff;
       font-size: 0.95rem;
-      transition: 0.3s;
+      transition: 0.3s ease;
     }
 
-    nav a:hover {
+    .nav-links a:hover {
       color: #93c5fd;
     }
 
+    .nav-btn {
+      background: #2563eb;
+      color: white !important;
+      padding: 10px 16px;
+      border-radius: 10px;
+      font-weight: bold;
+    }
+
+    .nav-btn:hover {
+      background: #1d4ed8;
+      color: white !important;
+    }
+
     .hero {
-      min-height: 90vh;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      min-height: 92vh;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 40px;
-      padding: 60px 8%;
+      padding: 60px 0;
       flex-wrap: wrap;
     }
 
-    .hero-text {
+    .hero-left {
       flex: 1;
-      min-width: 280px;
+      min-width: 300px;
+      animation: fadeUp 1s ease;
     }
 
-    .hero-text h1 {
-      font-size: 3rem;
-      margin-bottom: 20px;
+    .hero-badge {
+      display: inline-block;
+      background: #dbeafe;
+      color: #1d4ed8;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: bold;
+      margin-bottom: 18px;
+    }
+
+    .hero-left h1 {
+      font-size: 3.2rem;
+      line-height: 1.15;
+      margin-bottom: 18px;
       color: #0f172a;
     }
 
-    .hero-text p {
-      font-size: 1.1rem;
-      margin-bottom: 25px;
-      color: #334155;
-      max-width: 600px;
+    .hero-left p {
+      font-size: 1.08rem;
+      color: #475569;
+      max-width: 620px;
+      margin-bottom: 28px;
     }
 
     .hero-buttons {
       display: flex;
-      gap: 15px;
+      gap: 14px;
       flex-wrap: wrap;
     }
 
     .btn {
-      padding: 12px 24px;
-      border: none;
-      border-radius: 10px;
-      font-size: 1rem;
-      cursor: pointer;
-      text-decoration: none;
+      padding: 13px 22px;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 0.98rem;
+      transition: 0.3s ease;
       display: inline-block;
-      transition: 0.3s;
     }
 
     .btn-primary {
-      background: #2563eb;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
       color: white;
+      box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
     }
 
     .btn-primary:hover {
-      background: #1d4ed8;
       transform: translateY(-2px);
     }
 
     .btn-secondary {
       background: white;
-      color: #2563eb;
-      border: 1px solid #2563eb;
+      color: #1d4ed8;
+      border: 1px solid #bfdbfe;
+      box-shadow: 0 8px 18px rgba(15, 23, 42, 0.06);
     }
 
     .btn-secondary:hover {
-      background: #eff6ff;
       transform: translateY(-2px);
+      background: #f8fbff;
     }
 
-    .hero-card {
+    .hero-right {
       flex: 1;
-      min-width: 280px;
-      background: white;
-      border-radius: 20px;
-      padding: 25px;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      min-width: 300px;
+      display: flex;
+      justify-content: center;
+      animation: fadeUp 1.2s ease;
     }
 
-    .hero-card h3 {
-      margin-bottom: 15px;
+    .support-panel {
+      width: 100%;
+      max-width: 470px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(203, 213, 225, 0.8);
+      border-radius: 24px;
+      padding: 26px;
+      box-shadow: 0 18px 45px rgba(15, 23, 42, 0.10);
+    }
+
+    .support-panel h3 {
+      font-size: 1.3rem;
       color: #0f172a;
+      margin-bottom: 14px;
     }
 
-    .hero-card ul {
-      padding-left: 20px;
-      color: #475569;
+    .support-list {
+      list-style: none;
+      display: grid;
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .support-list li {
+      background: #f8fbff;
+      border: 1px solid #e2e8f0;
+      padding: 14px 16px;
+      border-radius: 14px;
+      color: #334155;
+      font-size: 0.96rem;
     }
 
     section {
-      padding: 70px 8%;
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      padding: 80px 0;
     }
 
-    .section-title {
+    .section-head {
       text-align: center;
-      margin-bottom: 40px;
+      margin-bottom: 42px;
     }
 
-    .section-title h2 {
-      font-size: 2rem;
+    .section-head h2 {
+      font-size: 2.2rem;
       color: #0f172a;
       margin-bottom: 10px;
     }
 
-    .section-title p {
-      color: #475569;
-      max-width: 700px;
+    .section-head p {
+      color: #64748b;
+      max-width: 760px;
       margin: auto;
+      font-size: 1rem;
     }
 
-    .card-grid {
+    .features-grid,
+    .service-grid,
+    .steps-grid {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
       gap: 22px;
@@ -166,19 +244,33 @@
 
     .card {
       background: white;
-      padding: 24px;
-      border-radius: 16px;
-      box-shadow: 0 8px 18px rgba(0,0,0,0.07);
-      transition: 0.3s;
+      border-radius: 20px;
+      padding: 26px 22px;
+      box-shadow: 0 12px 28px rgba(15, 23, 42, 0.07);
+      border: 1px solid #e2e8f0;
+      transition: 0.35s ease;
     }
 
     .card:hover {
-      transform: translateY(-6px);
+      transform: translateY(-7px);
+    }
+
+    .card-icon {
+      width: 54px;
+      height: 54px;
+      border-radius: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 16px;
+      background: linear-gradient(135deg, #dbeafe, #bfdbfe);
     }
 
     .card h3 {
-      margin-bottom: 12px;
       color: #1e3a8a;
+      margin-bottom: 10px;
+      font-size: 1.12rem;
     }
 
     .card p {
@@ -186,82 +278,226 @@
       font-size: 0.96rem;
     }
 
-    .how-it-works {
-      background: #f1f5f9;
-      border-radius: 24px;
+    .highlight-box {
+      background: linear-gradient(135deg, #0f172a, #1e3a8a);
+      color: white;
+      border-radius: 26px;
+      padding: 36px 28px;
+      box-shadow: 0 18px 40px rgba(15, 23, 42, 0.18);
     }
 
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+    .highlight-box h2 {
+      font-size: 2rem;
+      margin-bottom: 14px;
     }
 
-    .step {
-      background: white;
-      border-radius: 16px;
-      padding: 22px;
-      box-shadow: 0 6px 14px rgba(0,0,0,0.06);
+    .highlight-box p {
+      color: #dbeafe;
+      max-width: 800px;
     }
 
-    .step span {
-      display: inline-block;
-      width: 36px;
-      height: 36px;
-      line-height: 36px;
-      text-align: center;
+    .steps-grid .card {
+      position: relative;
+      padding-top: 56px;
+    }
+
+    .step-number {
+      position: absolute;
+      top: 18px;
+      left: 22px;
+      width: 34px;
+      height: 34px;
       border-radius: 50%;
       background: #2563eb;
       color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       font-weight: bold;
-      margin-bottom: 12px;
+      font-size: 0.95rem;
     }
 
-    .chatbot-section {
+    .chat-section {
       text-align: center;
     }
 
-    .chatbot-box {
-      max-width: 1000px;
-      margin: 30px auto 0;
+    .chat-wrapper {
+      margin-top: 30px;
       background: white;
-      border-radius: 20px;
+      border-radius: 24px;
       padding: 20px;
-      box-shadow: 0 12px 24px rgba(0,0,0,0.08);
+      box-shadow: 0 16px 40px rgba(15, 23, 42, 0.10);
+      border: 1px solid #e2e8f0;
+    }
+
+    .chat-top {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 8px 8px 18px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .chat-top h3 {
+      color: #0f172a;
+      font-size: 1.2rem;
+    }
+
+    .live-badge {
+      background: #dcfce7;
+      color: #166534;
+      padding: 8px 12px;
+      border-radius: 999px;
+      font-size: 0.85rem;
+      font-weight: bold;
     }
 
     iframe {
       width: 100%;
-      height: 500px;
+      height: 560px;
       border: none;
-      border-radius: 14px;
+      border-radius: 18px;
       background: #f8fafc;
     }
 
-    .footer {
+    .cta {
+      text-align: center;
+    }
+
+    .cta-box {
+      background: linear-gradient(135deg, #eff6ff, #dbeafe);
+      border: 1px solid #bfdbfe;
+      border-radius: 24px;
+      padding: 40px 24px;
+    }
+
+    .cta-box h2 {
+      color: #0f172a;
+      font-size: 2rem;
+      margin-bottom: 12px;
+    }
+
+    .cta-box p {
+      color: #475569;
+      max-width: 760px;
+      margin: 0 auto 22px;
+    }
+
+    footer {
       background: #0f172a;
       color: white;
       text-align: center;
-      padding: 22px;
-      margin-top: 40px;
+      padding: 28px 20px;
+      margin-top: 20px;
     }
 
-    .footer p {
-      opacity: 0.9;
+    footer p {
+      color: #cbd5e1;
       font-size: 0.95rem;
+      margin: 4px 0;
+    }
+
+    .floating-chat {
+      position: fixed;
+      right: 22px;
+      bottom: 22px;
+      z-index: 999;
+    }
+
+    .floating-chat a {
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #2563eb, #1d4ed8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 1.5rem;
+      box-shadow: 0 16px 30px rgba(37, 99, 235, 0.35);
+      transition: 0.3s ease;
+    }
+
+    .floating-chat a:hover {
+      transform: scale(1.08);
+    }
+
+    @keyframes fadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(22px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .hero-left h1 {
+        font-size: 2.5rem;
+      }
+
+      iframe {
+        height: 500px;
+      }
     }
 
     @media (max-width: 768px) {
-      .hero-text h1 {
-        font-size: 2.2rem;
+      .navbar {
+        flex-direction: column;
+        gap: 12px;
       }
 
-      nav {
-        display: none;
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 14px;
       }
 
       .hero {
+        min-height: auto;
         padding-top: 40px;
+      }
+
+      .hero-left h1 {
+        font-size: 2.15rem;
+      }
+
+      .section-head h2,
+      .highlight-box h2,
+      .cta-box h2 {
+        font-size: 1.7rem;
+      }
+
+      iframe {
+        height: 460px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-left h1 {
+        font-size: 1.9rem;
+      }
+
+      .btn {
+        width: 100%;
+        text-align: center;
+      }
+
+      iframe {
+        height: 420px;
+      }
+
+      .floating-chat {
+        right: 16px;
+        bottom: 16px;
+      }
+
+      .floating-chat a {
+        width: 56px;
+        height: 56px;
       }
     }
   </style>
@@ -269,102 +505,169 @@
 <body>
 
   <header>
-    <h2>CustomerSupportBot</h2>
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#features">Features</a>
-      <a href="#support">Support</a>
-      <a href="#chatbot">Try Bot</a>
-    </nav>
+    <div class="navbar">
+      <div class="logo">Customer<span>SupportBot</span></div>
+      <div class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#services">Services</a>
+        <a href="#how">How It Works</a>
+        <a href="#chatbot" class="nav-btn">Try Bot</a>
+      </div>
+    </div>
   </header>
 
   <section class="hero" id="home">
-    <div class="hero-text">
-      <h1>AI Customer Care Assistant</h1>
+    <div class="hero-left">
+      <div class="hero-badge">AI-Based Customer Support Assistant</div>
+      <h1>Smart Customer Care Chatbot for Instant Help</h1>
       <p>
-        Customer Support Chatbot that helps users with order issues, payment problems,
-        refunds, complaints, delivery queries, and general support.
+        This customer support chatbot helps users with order tracking, delivery issues,
+        payment failures, refunds, cancellations, complaints, and general support queries
+        through an interactive AI-based conversation system.
       </p>
       <div class="hero-buttons">
         <a href="#chatbot" class="btn btn-primary">Try Chatbot</a>
-        <a href="#features" class="btn btn-secondary">Explore Features</a>
+        <a href="#features" class="btn btn-secondary">View Features</a>
       </div>
     </div>
 
-    <div class="hero-card">
-      <h3>What this bot can do</h3>
-      <ul>
-        <li>Handle order and delivery questions</li>
-        <li>Guide users on payment issues</li>
-        <li>Support refunds and cancellations</li>
-        <li>Assist with complaints and customer care</li>
-      </ul>
+    <div class="hero-right">
+      <div class="support-panel">
+        <h3>Support Categories</h3>
+        <p style="color:#64748b; margin-bottom: 10px;">
+          The chatbot is designed to solve common customer service problems quickly and efficiently.
+        </p>
+        <ul class="support-list">
+          <li>Order status and delivery tracking</li>
+          <li>Refund, return, and cancellation support</li>
+          <li>Payment and billing problem guidance</li>
+          <li>Complaint registration and issue handling</li>
+          <li>General assistance and help desk support</li>
+        </ul>
+      </div>
     </div>
   </section>
 
   <section id="features">
-    <div class="section-title">
+    <div class="section-head">
       <h2>Key Features</h2>
-      <p>Designed to provide quick and user-friendly support for common customer service issues.</p>
+      <p>
+        The system is built to provide fast, user-friendly, and reliable support with an attractive interface and an AI chatbot powered by Dialogflow ES.
+      </p>
     </div>
 
-    <div class="card-grid">
+    <div class="features-grid">
       <div class="card">
-        <h3>Order Support</h3>
-        <p>Get help with order status, delays, missing items, and shipping issues.</p>
+        <div class="card-icon">💬</div>
+        <h3>Instant Chat Support</h3>
+        <p>Users can interact with the bot in real time and get immediate answers for support-related questions.</p>
       </div>
       <div class="card">
+        <div class="card-icon">📦</div>
+        <h3>Order Assistance</h3>
+        <p>The bot can guide users about order status, shipping delays, missing items, and delivery updates.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">💳</div>
         <h3>Payment Help</h3>
-        <p>Ask about failed payments, deducted money, and billing-related problems.</p>
+        <p>It can respond to failed transactions, deducted amounts, billing concerns, and payment troubleshooting.</p>
       </div>
       <div class="card">
+        <div class="card-icon">🔁</div>
         <h3>Refund Support</h3>
-        <p>Get guidance for returns, cancellations, and refund requests.</p>
+        <p>Customers can ask about return policy, refund requests, cancellation process, and refund timelines.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="section-head">
+      <h2>Customer Services Covered</h2>
+      <p>
+        This chatbot is useful for customer care systems in e-commerce, service platforms, help desks, and support portals.
+      </p>
+    </div>
+
+    <div class="service-grid">
+      <div class="card">
+        <div class="card-icon">🚚</div>
+        <h3>Delivery Queries</h3>
+        <p>Resolve issues related to late delivery, shipping delays, order location, and expected arrival time.</p>
       </div>
       <div class="card">
-        <h3>Complaint Support</h3>
-        <p>Register complaints and receive quick assistance through the chatbot.</p>
+        <div class="card-icon">🧾</div>
+        <h3>Billing & Charges</h3>
+        <p>Answer user questions related to billing errors, extra charges, invoice concerns, and transaction history.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">📣</div>
+        <h3>Complaint Handling</h3>
+        <p>Help users register complaints and provide the right next steps for resolution and support follow-up.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon">🛟</div>
+        <h3>General Help Desk</h3>
+        <p>Provide general assistance, navigation support, and common FAQ answers for a better customer experience.</p>
       </div>
     </div>
   </section>
 
-  <section class="how-it-works" id="support">
-    <div class="section-title">
+  <section>
+    <div class="highlight-box">
+      <h2>Why This Project Is Useful</h2>
+      <p>
+        The chatbot reduces manual workload, improves response speed, supports 24/7 availability, and helps customers solve common issues without waiting for human support. It is a practical AI-based project for customer support automation.
+      </p>
+    </div>
+  </section>
+
+  <section id="how">
+    <div class="section-head">
       <h2>How It Works</h2>
-      <p>The chatbot identifies user issues and provides instant support responses.</p>
+      <p>
+        The chatbot follows a simple support flow to understand the customer query and reply with helpful guidance.
+      </p>
     </div>
 
-    <div class="steps">
-      <div class="step">
-        <span>1</span>
-        <h3>Ask a Question</h3>
-        <p>User enters a support-related query such as refund, order, or payment issue.</p>
+    <div class="steps-grid">
+      <div class="card">
+        <div class="step-number">1</div>
+        <h3>Ask a Query</h3>
+        <p>The user enters a question related to refund, order problem, complaint, or payment issue.</p>
       </div>
-      <div class="step">
-        <span>2</span>
-        <h3>Bot Understands</h3>
-        <p>The chatbot uses Dialogflow ES intents to detect the problem category.</p>
+      <div class="card">
+        <div class="step-number">2</div>
+        <h3>Intent Detection</h3>
+        <p>The chatbot analyzes the message using Dialogflow ES and matches it with the correct support intent.</p>
       </div>
-      <div class="step">
-        <span>3</span>
-        <h3>Instant Response</h3>
-        <p>The bot replies with relevant customer support guidance and next steps.</p>
+      <div class="card">
+        <div class="step-number">3</div>
+        <h3>Bot Response</h3>
+        <p>It sends a relevant response based on the user's issue and provides the next step or solution.</p>
       </div>
-      <div class="step">
-        <span>4</span>
+      <div class="card">
+        <div class="step-number">4</div>
         <h3>Quick Assistance</h3>
-        <p>Users get fast help without needing to wait for manual support.</p>
+        <p>The user gets fast support without needing to wait for manual help in basic service situations.</p>
       </div>
     </div>
   </section>
 
-  <section class="chatbot-section" id="chatbot">
-    <div class="section-title">
-      <h2>Try the Chatbot</h2>
-      <p>Use the embedded Dialogflow customer support chatbot below.</p>
+  <section class="chat-section" id="chatbot">
+    <div class="section-head">
+      <h2>Try the Live Chatbot</h2>
+      <p>
+        The embedded chatbot below is connected to your Dialogflow ES agent and can answer customer support queries.
+      </p>
     </div>
 
-    <div class="chatbot-box">
+    <div class="chat-wrapper">
+      <div class="chat-top">
+        <h3>Customer Support AI Chat</h3>
+        <div class="live-badge">Live Bot Active</div>
+      </div>
+
       <iframe
         src="https://console.dialogflow.com/api-client/demo/embedded/newagent-enct"
         allow="microphone">
@@ -372,9 +675,25 @@
     </div>
   </section>
 
-  <footer class="footer">
-    <p>AI-Based Customer Support Chatbot using Dialogflow ES</p>
+  <section class="cta">
+    <div class="cta-box">
+      <h2>Need Fast Support Anytime?</h2>
+      <p>
+        This AI-powered chatbot is designed to provide quick, simple, and effective customer assistance for common issues and support requests.
+      </p>
+      <a href="#chatbot" class="btn btn-primary">Start Chatting Now</a>
+    </div>
+  </section>
+
+  <footer>
+    <p><strong>Customer Support Chatbot Project</strong></p>
+    <p>Built using HTML, CSS, JavaScript UI and Dialogflow ES integration</p>
+    <p>Project by Fariya Shaikh</p>
   </footer>
+
+  <div class="floating-chat">
+    <a href="#chatbot" title="Open Chatbot">💬</a>
+  </div>
 
 </body>
 </html>
