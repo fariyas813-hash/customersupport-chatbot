@@ -384,27 +384,6 @@
       font-size: 0.94rem;
     }
 
-    .float-chat {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 999;
-    }
-
-    .float-chat a {
-      width: 60px;
-      height: 60px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 50%;
-      background: linear-gradient(135deg, #22c55e, #16a34a);
-      color: #041008;
-      font-size: 1.4rem;
-      font-weight: bold;
-      box-shadow: 0 16px 30px rgba(34, 197, 94, 0.22);
-    }
-
     /* Dialogflow Messenger Styling */
     df-messenger {
       --df-messenger-bot-message: #1f2937;
@@ -417,6 +396,10 @@
       --df-messenger-input-font-color: #ffffff;
       --df-messenger-minimized-chat-close-icon-color: #041008;
       --df-messenger-input-placeholder-font-color: #9ca3af;
+      position: fixed !important;
+      bottom: 20px !important;
+      right: 20px !important;
+      z-index: 999999 !important;
     }
 
     @media (max-width: 980px) {
@@ -649,7 +632,7 @@
           Click the green chat icon at the bottom-right corner to start chatting with the
           AI customer support assistant.
         </p>
-        <p class="bot-note">Live Dialogflow Messenger is already integrated below.</p>
+        <p class="bot-note">Live Dialogflow Messenger is integrated.</p>
       </div>
     </div>
   </section>
@@ -662,16 +645,12 @@
     </div>
   </footer>
 
-  <div class="float-chat">
-    <a href="#try-bot" title="Open Bot">💬</a>
-  </div>
-
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
- <df-messenger
-  chat-title="CustomerSupportBot"
-  agent-id="1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2"
-  language-code="en"
-></df-messenger>
+  <df-messenger
+    chat-title="CustomerSupportBot"
+    agent-id="1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2"
+    language-code="en">
+  </df-messenger>
 
 </body>
 </html>
