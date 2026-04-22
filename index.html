@@ -371,6 +371,100 @@
       margin-bottom: 6px;
     }
 
+    .suggestion-wrapper {
+      margin-top: 22px;
+    }
+
+    .suggestion-title {
+      color: #ffffff;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-bottom: 14px;
+    }
+
+    .suggestion-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+
+    .suggestion-buttons button {
+      background: linear-gradient(135deg, #22c55e, #16a34a);
+      color: #041008;
+      border: none;
+      border-radius: 999px;
+      padding: 12px 18px;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.25s ease;
+      box-shadow: 0 8px 20px rgba(34, 197, 94, 0.18);
+    }
+
+    .suggestion-buttons button:hover {
+      transform: translateY(-2px) scale(1.02);
+    }
+
+    .quick-suggestions-floating {
+      position: fixed;
+      right: 20px;
+      bottom: 110px;
+      z-index: 999998;
+      width: 320px;
+      background: rgba(6, 16, 9, 0.96);
+      border: 1px solid rgba(34, 197, 94, 0.22);
+      border-radius: 20px;
+      padding: 16px;
+      box-shadow: 0 16px 34px rgba(0, 0, 0, 0.28);
+      backdrop-filter: blur(8px);
+    }
+
+    .quick-suggestions-floating h4 {
+      color: #ffffff;
+      font-size: 1rem;
+      margin-bottom: 12px;
+    }
+
+    .quick-suggestions-floating p {
+      color: #b9d7c1;
+      font-size: 0.9rem;
+      margin-bottom: 12px;
+    }
+
+    .quick-chip-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .quick-chip-list button {
+      border: none;
+      border-radius: 999px;
+      padding: 10px 14px;
+      background: rgba(34, 197, 94, 0.12);
+      border: 1px solid rgba(34, 197, 94, 0.24);
+      color: #cffffa;
+      cursor: pointer;
+      transition: 0.2s ease;
+      font-size: 0.88rem;
+    }
+
+    .quick-chip-list button:hover {
+      background: #22c55e;
+      color: #041008;
+    }
+
+    .quick-close {
+      position: absolute;
+      top: 10px;
+      right: 12px;
+      background: transparent;
+      border: none;
+      color: #9fd9ac;
+      font-size: 1.1rem;
+      cursor: pointer;
+    }
+
     footer {
       border-top: 1px solid rgba(34, 197, 94, 0.12);
       padding: 26px 0 34px;
@@ -416,6 +510,12 @@
       .hero-stats {
         grid-template-columns: 1fr;
       }
+
+      .quick-suggestions-floating {
+        width: calc(100% - 32px);
+        right: 16px;
+        bottom: 100px;
+      }
     }
 
     @media (max-width: 640px) {
@@ -435,6 +535,11 @@
 
       .nav-links {
         gap: 12px;
+      }
+
+      .suggestion-buttons button,
+      .quick-chip-list button {
+        width: 100%;
       }
     }
   </style>
@@ -633,9 +738,33 @@
           AI customer support assistant.
         </p>
         <p class="bot-note">Live Dialogflow Messenger is integrated.</p>
+
+        <div class="suggestion-wrapper">
+          <div class="suggestion-title">Suggested Questions</div>
+          <div class="suggestion-buttons">
+            <button onclick="sendSuggestedMessage('Track my order')">Track my order</button>
+            <button onclick="sendSuggestedMessage('Cancel my order')">Cancel my order</button>
+            <button onclick="sendSuggestedMessage('Return product')">Return product</button>
+            <button onclick="sendSuggestedMessage('Talk to support')">Talk to support</button>
+            <button onclick="sendSuggestedMessage('Payment issue')">Payment issue</button>
+            <button onclick="sendSuggestedMessage('Refund status')">Refund status</button>
+          </div>
+        </div>
       </div>
     </div>
   </section>
+
+  <div class="quick-suggestions-floating" id="quickSuggestionsBox">
+    <button class="quick-close" onclick="closeSuggestions()">×</button>
+    <h4>Quick Help</h4>
+    <p>Select a question to start chatting faster.</p>
+    <div class="quick-chip-list">
+      <button onclick="sendSuggestedMessage('Track my order')">Track my order</button>
+      <button onclick="sendSuggestedMessage('Refund status')">Refund status</button>
+      <button onclick="sendSuggestedMessage('Delivery issue')">Delivery issue</button>
+      <button onclick="sendSuggestedMessage('Payment failed')">Payment failed</button>
+    </div>
+  </div>
 
   <footer>
     <div class="container">
@@ -646,11 +775,41 @@
   </footer>
 
   <script src="https://www.gstatic.com/dialogflow-console/fast/messenger/bootstrap.js?v=1"></script>
+
   <df-messenger
+    intent="WELCOME"
     chat-title="CustomerSupportBot"
     agent-id="1a4c08a4-bbb6-4da3-8eba-c0985c1eaee2"
     language-code="en">
   </df-messenger>
+
+  <script>
+    function sendSuggestedMessage(text) {
+      const messenger = document.querySelector("df-messenger");
+
+      if (messenger && typeof messenger.renderCustomText === "function") {
+        messenger.renderCustomText(text);
+      } else {
+        alert("Chat widget is still loading. Please wait a moment and try again.");
+      }
+    }
+
+    function closeSuggestions() {
+      const box = document.getElementById("quickSuggestionsBox");
+      if (box) {
+        box.style.display = "none";
+      }
+    }
+
+    window.addEventListener("load", function () {
+      setTimeout(function () {
+        const box = document.getElementById("quickSuggestionsBox");
+        if (box) {
+          box.style.display = "block";
+        }
+      }, 1200);
+    });
+  </script>
 
 </body>
 </html>
